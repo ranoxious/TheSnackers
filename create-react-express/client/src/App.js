@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+//pulls the login component from the login
+import  Login from "./Login/Login.js";
 
 class App extends Component {
   render() {
@@ -13,6 +15,9 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        {/*Tells to display login component here */}
+        <div><Login mytitle="Login" /></div>
+        {/* <div><Login mytitle="SignUp" /></div> */}
       </div>
     );
   }
