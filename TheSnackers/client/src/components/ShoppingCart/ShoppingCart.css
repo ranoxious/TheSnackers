@@ -1,0 +1,8 @@
+.SnackItem {
+    height: 50px !important;
+}
+
+.SnackItem img {
+    height: 50px;
+    padding: 0 10px;
+}

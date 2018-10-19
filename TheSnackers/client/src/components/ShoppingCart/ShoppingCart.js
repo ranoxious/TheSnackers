@@ -1,20 +1,21 @@
-import React from "react"
+import React from "react";
+import "./ShoppingCart.css";
 
-//construct Square
+//SnackItem single line entry component
 class SnackItem extends React.Component {
 
     render() {
       return (
-        <tr className="SnackItem" height="50px">
+        <tr className="SnackItem">
             <td>
-                <img className="responsive-img" maxHeight="50" src="./assets/images/donuts.jpg" alt="donut" />
+                <img className="responsive-img" src="./assets/images/donuts.jpg" alt="donut" />
                 Donut
             </td>
             <td>
-
+                <input type="number" name="itemCount" value={this.props.quantity} />
             </td>
             <td>
-
+                $5.00
             </td>
             <td>
                 <button>X</button>
@@ -23,6 +24,9 @@ class SnackItem extends React.Component {
       );
     }
   }
+
+
+
 
 class ShoppingCart extends React.Component {
     //constructor builds state, state includes list of all selected items from database
@@ -35,13 +39,13 @@ class ShoppingCart extends React.Component {
                 <h1 className="page-header">Your Order:</h1>
                 <table>
                     <thead>
-                        <th className="col s6 cart-header">
+                        <th className="col s3 cart-header">
                             Snack
                         </th>
-                        <th className="col s2 cart-header">
+                        <th className="col s4 cart-header">
                             #
                         </th>
-                        <th className="col s3 cart-header">
+                        <th className="col s4 cart-header">
                             Price
                         </th>
                         <th className="col s1 cart-header">
@@ -50,7 +54,7 @@ class ShoppingCart extends React.Component {
                     </thead>
                     <tbody>
                         {/* Each row will be a "dumb component" item listing, receiving props from ShoppingCart */}
-                        <SnackItem />
+                        <SnackItem quantity="2" />
                     </tbody>
 
                 </table>
