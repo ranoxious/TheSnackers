@@ -5,9 +5,9 @@ class SnackItem extends React.Component {
 
     render() {
       return (
-        <tr className="SnackItem">
+        <tr className="SnackItem" height="50px">
             <td>
-                <img src="./assets/images/donuts.jpg" alt="donut" />
+                <img className="responsive-img" maxHeight="50" src="./assets/images/donuts.jpg" alt="donut" />
                 Donut
             </td>
             <td>

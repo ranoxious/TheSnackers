@@ -6,7 +6,7 @@ const app = express();
 const mongoose = require('mongoose');
 const routes = require('./routes');
 const db = require('./models');
-const mongoose = require("mongoose");
+
 
 var port = process.env.PORT || 3029;
 var router = express.Router();
