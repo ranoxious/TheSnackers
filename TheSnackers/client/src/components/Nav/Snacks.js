@@ -1,13 +1,35 @@
 import React from "react"
+import SnackItem from "./SnackItem";
 
-const Snacks = () => (
-    <div className="container">
-        <h1 className="page-header">My Project Page</h1>
-        <ul>
-            <li>NodeJS Projects</li>
-            <li>ReactJS Projects</li>
-        </ul>
-    </div>
-);
+
+class Snacks extends Component {
+    state = {
+      products: []
+    };
+  
+    componentDidMount() {
+      this.loadProducts();
+    }
+  
+    loadBooks = () => {
+      API.getProducts()
+        .then(res => this.setState({ books: res.data }))
+        .catch(err => console.log(err));
+    };
+  
+    render() {
+      return (
+        <div>
+                  {this.state.products.map(product => (
+
+                        <SnackItem Name={product.Name} />
+
+                  ) )};
+                 
+       </div>
+      );
+    }
+  }
+
 
 export default Snacks;

@@ -3,12 +3,11 @@ const cors = require('cors');
 const path = require("path");
 const bodyParser = require("body-parser");
 const app = express();
-const mongoose = require('mongoose');
 const routes = require('./routes');
 const db = require('./models');
 const mongoose = require("mongoose");
 
-var port = process.env.PORT || 3029;
+var port = process.env.PORT || 3006;
 var router = express.Router();
 
 // Define middleware here
@@ -24,27 +23,6 @@ app.use(cors());
 app.use(routes);
 
 mongoose.connect("mongodb://localhost/snacks");
-
-
-
-
-app.get("/snacks", function(req, res) {
-  // Grab every document in the Articles collection
-  db.snacks.find({})
-    .then(function(dbsnacks) {
-      // If we were able to successfully find Articles, send them back to the client
-      res.json(dbsnacks);
-    })
-    .catch(function(err) {
-      // If an error occurred, send it to the client
-      res.json(err);
-    });
-});
-
-
-
-
-
 
 
 

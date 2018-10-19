@@ -1,39 +1,63 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Product from './Product'
+'use strict'
+import axios from 'axios';
 
-const Cart  = ({ products, total, onCheckoutClicked }) => {
-  const hasProducts = products.length > 0
-  const nodes = hasProducts ? (
-    products.map(product =>
-      <Product
-        title={product.title}
-        price={product.price}
-        quantity={product.quantity}
-        key={product.id}
-      />
-    )
-  ) : (
-    <em>Please add some products to cart.</em>
-  )
-
-  return (
-    <div>
-      <h3>Your Cart</h3>
-      <div>{nodes}</div>
-      <p>Total: &#36;{total}</p>
-      <button onClick={onCheckoutClicked}
-        disabled={hasProducts ? '' : 'disabled'}>
-        Checkout
-      </button>
-    </div>
-  )
+//ADD TO CART
+export function addToCart(cart){
+  return function(dispatch){
+    axios.post('/api/cart', cart)
+    .then(function(response){
+      return dispatch({ type:'ADD_TO_CART', payload: response.data });
+    })
+    .catch(function(err){
+      return dispatch({ type:'ADD_TO_CART_REJECTED', payload: err });
+    });
+  }
 }
 
-Cart.propTypes = {
-  products: PropTypes.array,
-  total: PropTypes.string,
-  onCheckoutClicked: PropTypes.func
+//GET CART
+export function getCart(){
+  return function(dispatch){
+    axios.get('/api/cart')
+    .then(function(response){
+      return dispatch({ type:'GET_CART', payload: response.data });
+    })
+    .catch(function(err){
+      return dispatch({ type:'GET_CART_REJECTED', payload: err });
+    });
+  }
 }
 
-export default Cart
+//UPDATE CART
+export function updateCart(_id, unit, cart){
+  const updateIndex = cart.findIndex(function(cartItem){
+    return cartItem._id === _id;
+  });
+  const newCart = {
+    ...cart[updateIndex],
+    quantity: cart[updateIndex].quantity + unit,
+  };
+  let cartUpdate = [...cart.slice(0, updateIndex), newCart, ...cart.slice(updateIndex + 1)];
+
+  return function(dispatch){
+    axios.post('/api/cart', cartUpdate)
+    .then(function(response){
+      return dispatch({ type:'UPDATE_CART', payload: response.data });
+    })
+    .catch(function(err){
+      return dispatch({ type:'UPDATE_CART_REJECTED', payload: err });
+    });
+  }
+}
+
+//DELETE FROM CART
+export function deleteCartItem(cart){
+  return function(dispatch){
+    axios.post('/api/cart', cart)
+    .then(function(response){
+      return dispatch({ type:'DELETE_CART_ITEM', payload: response.data });
+    })
+    .catch(function(err){
+      return dispatch({ type:'DELETE_CART_ITEM_REJECTED', payload: err });
+    });
+  }
+}
