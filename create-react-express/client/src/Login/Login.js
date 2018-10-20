@@ -1,4 +1,4 @@
- import React, { Component } from "react";
+ import React, { Component } from "react"
 
  //login 
 	 class Login extends React.Component {
@@ -40,9 +40,11 @@
  	}
  	render() {
  		return  (
+		
+
  			<div id="login" className="col s12">
  				<form className="col s12">
- 					<div className="form-ontainer">
+ 					<div className="form-container">
  						<h3 className="teal-text">{this.loginTitle}</h3>
  						<div className="row"> 
  						<div className="input-field col s12">
@@ -57,7 +59,7 @@
  							<br/>
  							<br/>
  						</div>
- 						<button className="btn waves-effect waves-light teal" type="submit" name="action"
+ 						<button className="btn btn-default" type="submit" name="action"
  							// calls Login.handleSubmit upon clicking this button
  							onClick={
  								() => {
@@ -75,8 +77,15 @@
 			
 			
  		);
- 	}
+	 }
+	 
+
  };
+
+ 
+
+
+ 
 
 
  export default Login;

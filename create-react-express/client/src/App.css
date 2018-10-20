@@ -1,6 +1,11 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
+
+/*Places a border on all div tags - onlhy using it for development */
+/* div{
+  border: 1px solid blue;
+} */
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
