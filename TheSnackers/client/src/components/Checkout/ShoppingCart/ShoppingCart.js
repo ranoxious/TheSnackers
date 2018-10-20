@@ -99,34 +99,32 @@ class ShoppingCart extends React.Component {
         }
     }
 
-    //TODO- ADD HELPER FUNCTION TO CALCULATE TOTAL ITEM PRICE FROM {this.state.cartItems[i].unitPrice}
+    //TODO- ADD HELPER FUNCTION TO CALCULATE TOTAL ITEM PRICE
     // calcPriceHandler = (priceEach) => {
-    //     // this is proably a standard function, look up online
+    //     // this is probably a standard function, look up online
     //     // convert decimals to integers
     //     // multiply unit price by quantity
     //     // convert back to decimals
-    //     return "PLACEHOLDER";
     // }
 
     //function to render each line item
-  renderItem = (i) => {
-    let priceEach = this.state.cartItems[i].unitPrice;
-    let finalPrice = 0;
-    const calcPriceHandler = (priceEach) => {
-        // this is proably a standard function, look up online
-        // convert decimals to integers
-        // multiply unit price by quantity
-        // convert back to decimals
-        return "PLACEHOLDER";
+    renderItem = (i) => {
+        let priceEach = this.state.cartItems[i].unitPrice;
+        let finalPrice = 0;
+
+        const calcPriceHandler = (priceEach) => {
+            // this is proably a standard function, look up online
+            // convert decimals to integers
+            // multiply unit price by quantity
+            // convert back to decimals
+            return "PLACEHOLDER";
+        }
+
+        finalPrice = calcPriceHandler(priceEach);
+
+        return <SnackItem quantity={this.state.cartItems[i].quantity} unitPrice={this.state.cartItems[i].unitPrice} 
+        calcPrice={finalPrice} id={i} key={i} />;
     }
-
-    finalPrice = calcPriceHandler(priceEach);
-
-    return <SnackItem quantity={this.state.cartItems[i].quantity} unitPrice={this.state.cartItems[i].unitPrice} 
-    calcPrice={finalPrice} id={i} key={i} />;
-  }
-
-//   calcPrice={() => this.calcPriceHandler(this.state.cartItems[i].unitPrice)}
 
     render() {
         return (
