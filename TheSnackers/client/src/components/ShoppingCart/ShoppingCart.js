@@ -21,18 +21,18 @@ class SnackItem extends React.Component {
 
     render() {
       return (
-        <tr className="SnackItem">
-            <td>
+        <tr className="SnackItem row">
+            <td className="col s5">
                 <img className="responsive-img" src="./assets/images/donuts.jpg" alt="donut" />
                 Donut
             </td>
-            <td>
+            <td className="col s2">
                 <input type="number" name="itemCount" value={this.props.quantity} />
             </td>
-            <td>
+            <td className="col s4"> 
                 ${this.props.calcPrice}
             </td>
-            <td>
+            <td className="col s1">
                 <button>X</button>
             </td>
         </tr>
@@ -61,11 +61,11 @@ class ShoppingCart extends React.Component {
             <div className="ShoppingCart">
                 <h3 className="page-header">Your Order:</h3>
                 <table className="highlight">
-                    <thead>
-                        <th className="col s3 cart-header">
+                    <thead className="row">
+                        <th className="col s5 cart-header">
                             Snack
                         </th>
-                        <th className="col s4 cart-header">
+                        <th className="col s2 cart-header">
                             #
                         </th>
                         <th className="col s4 cart-header">
