@@ -1,19 +1,31 @@
 import React from "react";
 import "./ShoppingCart.css";
-import "../../materialize.css";
+import "../../../materialize.css";
 
-//STATIC GLOBAL VARIABLES FOR TESTING
-//array representing the data for three selected items to be purchased
-//using dummy data to set up features, real data will need to be imported properly from database later
-// const cartItems = [
-//     {
-//         quantity: 2,
-//         unitPrice: 5
-//     }
-// ]
-//END STATIC GLOBAL VARIABLES FOR TESTING
+/*FILE DESCRIPTION
+This file contains the Shopping Cart module.
+Shopping cart will be the top section of the Checkout page.
 
+Shopping Cart will receive the list of ids of the items selected from the Storefront as a prop. (If needed, Storefront can render Checkout which renders cart.)
+    e.g. <ShoppingCart itemIds={[12345, 34521, 65432, 99932, 75234]} />
 
+Features:
+    1) get item details by id from database & display each SnackItem
+        a. allow user to remove item from cart
+        b. allow user to update quantity
+
+    2) calculate
+        a. item total cost (quantity * unit price)
+        b. subtotal of all cart items
+        c. final order total (adding tax, no delivery fee)
+
+    3) store in state
+        a. array of items in cart, including: id, name, quantity
+        b. final order total
+
+considerations- should Checkout page actually manage the state of the order (lift cart's state up)
+
+*/
 
 
 //SnackItem 
