@@ -1,5 +1,6 @@
 import React from "react";
 import "./ShoppingCart.css";
+import "../../materialize.css";
 
 //STATIC GLOBAL VARIABLES FOR TESTING
 //array representing the data for three selected items to be purchased
@@ -58,8 +59,8 @@ class ShoppingCart extends React.Component {
         return (
     
             <div className="ShoppingCart">
-                <h1 className="page-header">Your Order:</h1>
-                <table>
+                <h3 className="page-header">Your Order:</h3>
+                <table className="highlight">
                     <thead>
                         <th className="col s3 cart-header">
                             Snack
@@ -76,6 +77,9 @@ class ShoppingCart extends React.Component {
                     </thead>
                     <tbody>
                         {/* Each row will be a "dumb component" item listing, receiving props from ShoppingCart */}
+                        <SnackItem quantity="2" calcPrice={this.state.calcPrice} />
+                        <SnackItem quantity="2" calcPrice={this.state.calcPrice} />
+                        <SnackItem quantity="2" calcPrice={this.state.calcPrice} />
                         <SnackItem quantity="2" calcPrice={this.state.calcPrice} />
                         {/* TODO- insert mapped quantity imported with "get" route from database */}
                     </tbody>
