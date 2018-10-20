@@ -17,9 +17,9 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p> */}
         {/*Tells to display login component here */}
-        {/* <div><Login mytitle="Login" /></div>
-        <div><Login mytitle="Signup" /></div> */}
-        <div><Delivery /></div>
+        <div><Login mytitle="Login" /></div>
+        <div><Login mytitle="Signup" /></div>
+        {/* <div><Delivery /></div> */}
        {/* </div> */}
        </div>
     );

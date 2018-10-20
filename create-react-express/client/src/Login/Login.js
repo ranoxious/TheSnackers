@@ -47,30 +47,32 @@
  					<div className="form-container">
  						<h3 className="teal-text">{this.loginTitle}</h3>
  						<div className="row"> 
- 						<div className="input-field col s12">
- 							<label for="email">E-Mail: </label>
- 							<input id="email" type="email" className="validate" onChange={this.handleInputUpdate}
+						 	{/* Enter in E-mail */}
+ 							<div className="input-field col s12">
+							 <label for="email">E-mail</label>
+						 	 <input id="email" type="email" class="validate" onChange={this.handleInputUpdate}
  								value={this.state.email}/>
- 							<br/>
- 							<br/>
- 							<label for="password">Password: </label>
- 							<input id="password" type="password" className="validate" onChange={this.handleInputUpdate}
+							</div>
+ 						<br/>
+ 						<br/>
+						 	{/* Enter in the Password */}
+							<div className="input-field col s12">
+							 <label for="password">Password</label>
+							 <input id="password" type="password" class="validate" onChange={this.handleInputUpdate}
  								value={this.state.password}/>
- 							<br/>
- 							<br/>
- 						</div>
- 						<button className="btn btn-default" type="submit" name="action"
+							</div>
+ 						<br/>
+ 						<br/>
+ 							</div>
+ 							<button className="btn btn-default" type="submit" name="action"
  							// calls Login.handleSubmit upon clicking this button
- 							onClick={
+ 							 onClick={
  								() => {
  									this.setState({email: document.getElementById("email").textContent });
  									this.handleSubmit();
  								}
- 							}>
- 						Submit
+ 							}>Submit
  						</button>
-
- 					</div>
  					</div>
  				</form>
  			</div>
