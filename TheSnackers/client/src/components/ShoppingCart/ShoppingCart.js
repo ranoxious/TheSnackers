@@ -1,7 +1,21 @@
 import React from "react";
 import "./ShoppingCart.css";
 
-//SnackItem single line entry component
+//STATIC GLOBAL VARIABLES FOR TESTING
+//array representing the data for three selected items to be purchased
+//using dummy data to set up features, real data will need to be imported properly from database later
+const cartItems = [
+    {
+
+    }
+]
+//END STATIC GLOBAL VARIABLES FOR TESTING
+
+
+
+
+//SnackItem 
+//single line entry component
 class SnackItem extends React.Component {
 
     render() {
@@ -15,7 +29,7 @@ class SnackItem extends React.Component {
                 <input type="number" name="itemCount" value={this.props.quantity} />
             </td>
             <td>
-                $5.00
+                ${this.props.calcPrice}
             </td>
             <td>
                 <button>X</button>
@@ -24,13 +38,21 @@ class SnackItem extends React.Component {
       );
     }
   }
+//END SnackItem 
 
 
-
-
+//Shopping Cart
+//assembled component, contains multiple line entries, imports array of selected items as state
 class ShoppingCart extends React.Component {
-    //constructor builds state, state includes list of all selected items from database
-
+    //constructor builds state, state includes list of selected items from database
+    constructor(props) {
+        super(props);
+        this.state = {
+            cartItems: cartItems,
+            //includes calculated cart total, initialized as 0
+            calcPrice: 0
+        }
+    }
 
     render() {
         return (
@@ -54,7 +76,8 @@ class ShoppingCart extends React.Component {
                     </thead>
                     <tbody>
                         {/* Each row will be a "dumb component" item listing, receiving props from ShoppingCart */}
-                        <SnackItem quantity="2" />
+                        <SnackItem quantity="2" calcPrice={this.state.calcPrice} />
+                        {/* TODO- insert mapped quantity imported with "get" route from database */}
                     </tbody>
 
                 </table>
