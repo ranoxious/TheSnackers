@@ -50,8 +50,13 @@ class SnackItem extends React.Component {
             <td className="col s2">
                 <input type="number" name="itemCount" value={this.props.quantity} />
             </td>
-            <td className="col s4"> 
+            <td className="col s2"> 
+                ${this.props.unitPrice}
+            </td>
+            <td className="col s2 bold"> 
                 ${this.props.calcPrice}
+                {/* $5.00 */}
+                {/* placeholder above while writing calculation function for calcPrice */}
             </td>
             <td className="col s1">
                 <button>X</button>
@@ -73,28 +78,55 @@ class ShoppingCart extends React.Component {
             cartItems:[
                 {
                     quantity: 2,
-                    unitPrice: 5
+                    unitPrice: 2.50
                 },
                 {
                     quantity: 3,
-                    unitPrice: 4
+                    unitPrice: 4.00
                 },
                 {
                     quantity: 1,
-                    unitPrice: 5
+                    unitPrice: 3.25
                 },
                 {
                     quantity: 5,
-                    unitPrice: 4
+                    unitPrice: 4.50
                 }
             
             ],
             //includes calculated cart total, initialized as 0
-            calcPrice: 0
+            subtotalPrice: 0
         }
     }
 
     //TODO- ADD HELPER FUNCTION TO CALCULATE TOTAL ITEM PRICE FROM {this.state.cartItems[i].unitPrice}
+    // calcPriceHandler = (priceEach) => {
+    //     // this is proably a standard function, look up online
+    //     // convert decimals to integers
+    //     // multiply unit price by quantity
+    //     // convert back to decimals
+    //     return "PLACEHOLDER";
+    // }
+
+    //function to render each line item
+  renderItem = (i) => {
+    let priceEach = this.state.cartItems[i].unitPrice;
+    let finalPrice = 0;
+    const calcPriceHandler = (priceEach) => {
+        // this is proably a standard function, look up online
+        // convert decimals to integers
+        // multiply unit price by quantity
+        // convert back to decimals
+        return "PLACEHOLDER";
+    }
+
+    finalPrice = calcPriceHandler(priceEach);
+
+    return <SnackItem quantity={this.state.cartItems[i].quantity} unitPrice={this.state.cartItems[i].unitPrice} 
+    calcPrice={finalPrice} id={i} key={i} />;
+  }
+
+//   calcPrice={() => this.calcPriceHandler(this.state.cartItems[i].unitPrice)}
 
     render() {
         return (
@@ -107,10 +139,13 @@ class ShoppingCart extends React.Component {
                             Snack
                         </th>
                         <th className="col s2 cart-header">
-                            #
+                            Quantity
                         </th>
-                        <th className="col s4 cart-header">
-                            Price
+                        <th className="col s2 cart-header">
+                            x Price for Each =
+                        </th>
+                        <th className="col s2 cart-header">
+                            Total
                         </th>
                         <th className="col s1 cart-header">
                             {/* blank because above cart remove button column */}
@@ -118,11 +153,17 @@ class ShoppingCart extends React.Component {
                     </thead>
                     <tbody>
                         {/* Each row will be a "dumb component" item listing, receiving props from ShoppingCart */}
-                        <SnackItem quantity={this.state.cartItems[0].quantity} calcPrice={this.state.calcPrice} />
-                        <SnackItem quantity={this.state.cartItems[1].quantity} calcPrice={this.state.calcPrice} />
-                        <SnackItem quantity={this.state.cartItems[2].quantity} calcPrice={this.state.calcPrice} />
-                        <SnackItem quantity={this.state.cartItems[3].quantity} calcPrice={this.state.calcPrice} />
-                        {/* TODO- insert mapped quantity imported with "get" route from database */}
+                        {/* <SnackItem quantity={this.state.cartItems[0].quantity} 
+                        unitPrice={this.state.cartItems[0].unitPrice} 
+                        calcPrice={this.calcPriceHandler(this.state.cartItems[0].unitPrice)} /> */}
+                        {this.renderItem(0)}
+                        {this.renderItem(1)}
+                        {this.renderItem(2)}
+                        {this.renderItem(3)}
+
+                        {/* <SnackItem quantity={this.state.cartItems[1].quantity} unitPrice={this.state.cartItems[1].unitPrice} /> */}
+                        {/* <SnackItem quantity={this.state.cartItems[2].quantity} unitPrice={this.state.cartItems[2].unitPrice} /> */}
+                        {/* <SnackItem quantity={this.state.cartItems[3].quantity} unitPrice={this.state.cartItems[3].unitPrice} /> */}
                     </tbody>
 
                 </table>
