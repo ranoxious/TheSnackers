@@ -6,8 +6,14 @@ import "../../../materialize.css";
 This file contains the Shopping Cart module.
 Shopping cart will be the top section of the Checkout page.
 
-Shopping Cart will receive the list of ids of the items selected from the Storefront as a prop. (If needed, Storefront can render Checkout which renders cart.)
-    e.g. <ShoppingCart itemIds={[12345, 34521, 65432, 99932, 75234]} />
+Shopping Cart will receive the list of item ids and quantities selected from the Storefront/Checkout as a prop.
+    e.g. <ShoppingCart items={ordered:[
+        {id: 12345, quantity: 1},
+        {id: 75234, quantity: 5},
+        {id: 99876, quantity: 3},
+        {id: 22333, quantity: 2},
+        {id: 08087, quantity: 2}
+    ]} />
 
 Features:
     1) get item details by id from database & display each SnackItem
@@ -19,11 +25,13 @@ Features:
         b. subtotal of all cart items
         c. final order total (adding tax, no delivery fee)
 
-    3) store in state
+    3) store in state (for now)
         a. array of items in cart, including: id, name, quantity
         b. final order total
 
-considerations- should Checkout page actually manage the state of the order (lift cart's state up)
+TODO- once this module is complete, modify so Checkout page will manage the state of the order (lift cart's state up)
+
+TODO- research sessions so cart data persists
 
 */
 

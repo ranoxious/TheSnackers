@@ -6,7 +6,7 @@ import Home from "./components/Nav/Home";
 import About from "./components/Nav/About";
 import Snacks from "./components/Nav/Snacks";
 import Cart from "./components/Nav/Cart";
-// import CartoonCard from './components/CartoonCard'; //Emily- commented this out since it's not being used, file is example code
+import CartoonCard from './components/CartoonCard';
 
 class App extends Component {
   render() {
