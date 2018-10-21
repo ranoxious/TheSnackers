@@ -51,12 +51,11 @@ class SnackItem extends React.Component {
                 <input type="number" name="itemCount" value={this.props.quantity} />
             </td>
             <td className="col s2"> 
-                ${this.props.unitPrice}
+                ${this.props.unitPrice.toFixed(2)}
             </td>
             <td className="col s2 bold"> 
-                ${this.props.calcPrice}
-                {/* $5.00 */}
-                {/* placeholder above while writing calculation function for calcPrice */}
+                ${this.props.calcPrice.toFixed(2)}
+                {/* toFixed forces display as string with 2 decimal places, ensuring the $0.00 format */}
             </td>
             <td className="col s1">
                 <button>X</button>
@@ -99,28 +98,30 @@ class ShoppingCart extends React.Component {
         }
     }
 
-    //TODO- ADD HELPER FUNCTION TO CALCULATE TOTAL ITEM PRICE
-    // calcPriceHandler = (priceEach) => {
-    //     // this is probably a standard function, look up online
-    //     // convert decimals to integers
-    //     // multiply unit price by quantity
-    //     // convert back to decimals
-    // }
 
     //function to render each line item
     renderItem = (i) => {
         let priceEach = this.state.cartItems[i].unitPrice;
+        let currentQuantity = this.state.cartItems[i].quantity;
         let finalPrice = 0;
 
-        const calcPriceHandler = (priceEach) => {
-            // this is proably a standard function, look up online
-            // convert decimals to integers
-            // multiply unit price by quantity
-            // convert back to decimals
-            return "PLACEHOLDER";
-        }
+        //calcPriceHandler helper function - gives quantity * price result for each line 
+        const calcPriceHandler = (localPrice, localQuant) => {
+            let localTotalPrice;
+            // convert decimals to integers (*100) to avoid imprecise float calculations
+            localPrice = localPrice * 100;
 
-        finalPrice = calcPriceHandler(priceEach);
+            // multiply unit price by quantity
+            localTotalPrice = localPrice * localQuant;
+
+            // convert back to decimals (/100)
+            localTotalPrice = localTotalPrice / 100;
+
+            return localTotalPrice;
+        }
+        //END calcPriceHandler helper function
+
+        finalPrice = calcPriceHandler(priceEach, currentQuantity);
 
         return <SnackItem quantity={this.state.cartItems[i].quantity} unitPrice={this.state.cartItems[i].unitPrice} 
         calcPrice={finalPrice} id={i} key={i} />;
