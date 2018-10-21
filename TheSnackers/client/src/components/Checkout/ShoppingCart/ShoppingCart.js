@@ -77,36 +77,32 @@ class ShoppingCart extends React.Component {
             cartItems:[
                 {
                     quantity: 2,
-                    unitPrice: 2.50
+                    unitPrice: 2.50,
+                    calcPrice: null
                 },
                 {
                     quantity: 3,
-                    unitPrice: 4.00
+                    unitPrice: 4.00,
+                    calcPrice: null
                 },
                 {
                     quantity: 1,
-                    unitPrice: 3.25
+                    unitPrice: 3.25,
+                    calcPrice: null
                 },
                 {
                     quantity: 5,
-                    unitPrice: 4.50
+                    unitPrice: 4.50,
+                    calcPrice: null
                 }
             
             ],
             //includes calculated cart total, initialized as 0
             subtotalPrice: 0
         }
-    }
 
-
-    //function to render each line item
-    renderItem = (i) => {
-        let priceEach = this.state.cartItems[i].unitPrice;
-        let currentQuantity = this.state.cartItems[i].quantity;
-        let finalPrice = 0;
-
-        //calcPriceHandler helper function - gives quantity * price result for each line 
-        const calcPriceHandler = (localPrice, localQuant) => {
+         //calcPriceHandler helper function - gives quantity * price result for each line 
+         const calcPriceHandler = (localPrice, localQuant) => {
             let localTotalPrice;
             // convert decimals to integers (*100) to avoid imprecise float calculations
             localPrice = localPrice * 100;
@@ -121,10 +117,21 @@ class ShoppingCart extends React.Component {
         }
         //END calcPriceHandler helper function
 
-        finalPrice = calcPriceHandler(priceEach, currentQuantity);
+        //use function to calculate and store total price (calcPrice) for each array item in state
+        for (let i = 0; i < this.state.cartItems.length; i++) {
+            const item = this.state.cartItems[i];
+            item.calcPrice = calcPriceHandler(item.unitPrice, item.quantity);
+        }
+
+
+    }
+
+
+    //function to render each line item
+    renderItem = (i) => {
 
         return <SnackItem quantity={this.state.cartItems[i].quantity} unitPrice={this.state.cartItems[i].unitPrice} 
-        calcPrice={finalPrice} id={i} key={i} />;
+        calcPrice={this.state.cartItems[i].calcPrice} id={i} key={i} />;
     }
 
     render() {
