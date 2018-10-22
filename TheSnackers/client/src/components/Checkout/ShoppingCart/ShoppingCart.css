@@ -1,0 +1,9 @@
+/* .SnackItem {
+    height: 50px;
+} */
+
+.SnackItem img.responsive-img {
+    width: auto;
+    height: 80px;
+    padding: 0 10px;
+}
