@@ -21,7 +21,7 @@ Features:
         b. allow user to update quantity
 
     2) calculate
-        a. item total cost (quantity * unit price)
+        a. item total cost (quantity * unit price)- DONE, stores in state
         b. subtotal of all cart items
         c. final order total (adding tax, no delivery fee)
 
@@ -70,9 +70,14 @@ class SnackItem extends React.Component {
 //Shopping Cart
 //assembled component, contains multiple line entries, imports array of selected items as state
 class ShoppingCart extends React.Component {
+    
+
     //constructor builds state, state includes list of selected items from database
     constructor(props) {
         super(props);
+        const TAX = 0.10; //constant value TAX holds tax for use in later calculations
+        //TODO- look up sales tax for Virginia to enter here, using 10% for development
+
         this.state = {
             cartItems:[
                 {
@@ -97,22 +102,20 @@ class ShoppingCart extends React.Component {
                 }
             
             ],
-            //includes calculated cart total, initialized as 0
-            subtotalPrice: 0
+            //calculated cart subtotal and total after tax, both initialized as 0
+            subtotalPrice: 0,
+            finalTotalPrice: 0
         }
 
-         //calcPriceHandler helper function - gives quantity * price result for each line 
-         const calcPriceHandler = (localPrice, localQuant) => {
+        //calcPriceHandler helper function - gives quantity * price result for each line 
+        const calcPriceHandler = (localPrice, localQuant) => {
             let localTotalPrice;
             // convert decimals to integers (*100) to avoid imprecise float calculations
             localPrice = localPrice * 100;
-
             // multiply unit price by quantity
             localTotalPrice = localPrice * localQuant;
-
             // convert back to decimals (/100)
             localTotalPrice = localTotalPrice / 100;
-
             return localTotalPrice;
         }
         //END calcPriceHandler helper function
@@ -122,6 +125,9 @@ class ShoppingCart extends React.Component {
             const item = this.state.cartItems[i];
             item.calcPrice = calcPriceHandler(item.unitPrice, item.quantity);
         }
+
+        // this.state.subtotalPrice = reduce()//use reduce to add all calcPrice values in array together
+        // this.state.finalTotalPrice = subtotalPrice + (tax * subtotalprice)        
 
 
     }
