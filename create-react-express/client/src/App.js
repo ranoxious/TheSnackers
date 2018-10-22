@@ -16,9 +16,10 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p> */}
-        {/*Tells to display login component here */}
-        <div><Login mytitle="Login" /></div>
-        <div><Login mytitle="Signup" /></div>
+        {/*Tells to display form component here */}
+        
+        <div><Login /></div>
+        
         {/* <div><Delivery /></div> */}
        {/* </div> */}
        </div>

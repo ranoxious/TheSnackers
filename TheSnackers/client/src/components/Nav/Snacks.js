@@ -2,7 +2,7 @@ import React from "react"
 import SnackItem from "./SnackItem";
 
 
-class Snacks extends Component {
+class Snacks extends React.Component {
     state = {
       products: []
     };
