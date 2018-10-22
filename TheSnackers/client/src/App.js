@@ -7,11 +7,21 @@ import About from "./components/Nav/About";
 import Snacks from "./components/Nav/Snacks";
 import Cart from "./components/Nav/Cart";
 //import CartoonCard from './components/CartoonCard';
+//pulls the Login component from the Login
+import Login from "./components/Login/Login";
+//pulls the Delivery component from the login from the Checkout
+// import Delivery from "./Checkout/Delivery.js";
+//pulls the Billingcomponent from the Checkout
+
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+      {/*Tells to display forms component here */}
+      <div><Login /></div>
+        {/* <div><Delivery /></div> */}
         <header className="App-header">
         {/* <ConditionalRenderer /> */}
 
