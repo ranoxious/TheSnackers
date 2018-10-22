@@ -41,6 +41,11 @@ class App extends Component {
    
           <h1 className="App-title">Snacks-2-Go</h1>  
         </header>
+
+        {/*EMILY- TESTING SECTION ONLY */}
+        <Cart />
+        {/*END EMILY- TESTING SECTION ONLY */}
+
         <p className="App-intro">
         
 
