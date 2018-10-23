@@ -6,13 +6,41 @@ import Home from "./components/Nav/Home";
 import About from "./components/Nav/About";
 import Snacks from "./components/Nav/Snacks";
 import Cart from "./components/Nav/Cart";
-//import CartoonCard from './components/CartoonCard';
+import ProductList from "./components/ProductList";
 
-class App extends Component {
-  render() {
+
+// class App extends Component {
+//   render() {
+//     return (
+
+const App = () => {
     return (
-      <div className="App">
-        <header className="App-header">
+        <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <h1>Welcome to Snacks-2-Go</h1>
+                </div>
+            </div>
+            {/* <div className="row"> */}
+                {/* <div className="col-md-8">
+                    <ProductList />
+                </div> */}
+                {/* <div className="col-md-4">
+                    <Cart />
+                </div> */}
+            {/* </div> */}
+
+            {/* <footer>
+                <small>
+                &copy; The Snackers 2018
+                </small>
+            </footer> */}
+
+
+
+
+
+
         {/* <ConditionalRenderer /> */}
 
 <Router>
@@ -28,21 +56,17 @@ class App extends Component {
 
 
   </Router>
+
    
-          <h1 className="App-title">Snacks-2-Go</h1>  
+          {/* <h1 className="App-title">Snacks-2-Go</h1>  
         </header>
-
-        {/*EMILY- TESTING SECTION ONLY */}
-        <Cart />
-        {/*END EMILY- TESTING SECTION ONLY */}
-
-        <p className="App-intro">
+        <p className="App-intro"> */}
         
 
-        </p>
+        {/* </p> */}
       </div>
     );
   }
-}
+
 
 export default App;

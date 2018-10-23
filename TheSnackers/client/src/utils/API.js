@@ -6,7 +6,7 @@ export default {
     return axios.get("/api/getproducts");
   },
   // Gets the product with the given id
-  getProducts: function(id) {
+  getProduct: function(id) {
     return axios.get("/api/getproducts/" + id);
   },
   // Deletes the product with the given id
@@ -14,7 +14,7 @@ export default {
     return axios.delete("/api/getproducts/" + id);
   },
   // Saves a product to the database
-  saveProducts: function(bookData) {
-    return axios.post("/api/getproducts", productData);
+  saveProducts: function(snacksData) {
+    return axios.post("/api/getproducts", snacksData);
   }
 };

@@ -1,28 +1,30 @@
-import React from "react"
+import React, {Component} from "react"
 import SnackItem from "./SnackItem";
+import API from "../../utils/API";
+import snacks from "../../snacks.json";
 
 
 class Snacks extends Component {
     state = {
-      products: []
+      snacks
     };
   
     componentDidMount() {
-      this.loadProducts();
+      //this.loadSnacks();
     }
   
-    loadBooks = () => {
+    loadSnacks = () => {
       API.getProducts()
-        .then(res => this.setState({ books: res.data }))
+        .then(res => this.setState({ products: res.data }))
         .catch(err => console.log(err));
     };
   
     render() {
       return (
         <div>
-                  {this.state.products.map(product => (
+                  {this.state.snacks.map(product => (
 
-                        <SnackItem Name={product.Name} />
+                        <SnackItem Quantity={product.quanity} Key={product.id} Image={product.image} Price={product.price} Name={product.name} />
 
                   ) )};
                  
